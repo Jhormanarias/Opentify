@@ -1,15 +1,24 @@
-
+import { BrowserRouter as Router, Switch, Route}  from 'react-router-dom';
 import './App.css';
-import Navbar from './Navbar';
+import Inicio from './components/pages/Inicio';
+import Navbar from './components/navigation/Navbar';
+import Buscar from './components/pages/Buscar';
+import Favoritos from './components/pages/Favoritos';
+import Footer from './components/microcomponents/Footer';
+
 
 const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src='../images/logoOpentify.png' width='200' height='200' />
-        <br />
-        <Navbar/>
-      </header>
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route path='/' exact component={Inicio} />
+          <Route path='/buscar' exact component={Buscar} />
+          <Route path='/favoritos' exact component={Favoritos} />
+        </Switch>
+      </Router>
+      <Footer />
     </div>
   );
 }
